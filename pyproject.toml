@@ -1,0 +1,30 @@
+[project]
+name = "llmops-telemetry-command-center"
+version = "1.0.0"
+description = "Decision-ready Streamlit command center for LLM telemetry, routing policy review, drift signals, triage thresholds, and evidence exports."
+requires-python = ">=3.11"
+dependencies = [
+  "streamlit==1.51.0",
+  "pandas>=2.2,<3.0",
+  "numpy>=1.26,<3.0",
+  "plotly>=5.24,<7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0,<10.0",
+  "ruff>=0.8,<1.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]

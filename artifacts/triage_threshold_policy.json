@@ -1,0 +1,64 @@
+{
+  "status": "ok",
+  "label_definition": "is_failure (post-call failure triage)",
+  "threshold": 0.09999999999999999,
+  "operating_mode": "conservative_review_all_equivalent",
+  "recommendation": "Use as a conservative baseline or lower false-negative cost / add stronger features before rollout.",
+  "selected_policy_metrics": {
+    "policy": "selected_threshold",
+    "expected_cost": 2006.0,
+    "reviewed_rows": 1003,
+    "review_share": 0.9960278053624627,
+    "mean_reviews_per_day": 12.85897435897436,
+    "p90_reviews_per_day": 26.0,
+    "tn": 4,
+    "fp": 702,
+    "fn": 0,
+    "tp": 301,
+    "precision": 0.3000997008973081,
+    "recall": 1.0
+  },
+  "time_split": {
+    "windowing_method": "dataset_split",
+    "history_start_timestamp_utc": "2025-02-01 02:23:54+00:00",
+    "history_end_timestamp_utc": "2025-04-30 22:23:19+00:00",
+    "calibration_source": "val_split",
+    "calibration_start_timestamp_utc": "2025-02-01 02:22:18+00:00",
+    "calibration_end_timestamp_utc": "2025-04-30 15:59:52+00:00",
+    "evaluation_start_timestamp_utc": "2025-02-01 05:39:47+00:00",
+    "evaluation_end_timestamp_utc": "2025-04-30 22:01:15+00:00"
+  },
+  "features_num": [
+    "latency_ms",
+    "prompt_tokens",
+    "completion_tokens",
+    "total_tokens",
+    "cost_usd",
+    "tool_calls_count",
+    "tokens_per_second",
+    "prompt_to_completion_ratio"
+  ],
+  "features_cat": [
+    "model_provider",
+    "model_name",
+    "use_case",
+    "channel",
+    "account_tier",
+    "region",
+    "segment"
+  ],
+  "economics": {
+    "review_cost": 2.0,
+    "fn_cost": 40.0,
+    "capacity_per_day": 200,
+    "capacity_p90_guard": 250
+  },
+  "metrics": {
+    "roc_auc": 0.6141379537518941,
+    "avg_precision": 0.37193333821558205,
+    "test_base_rate": 0.29890764647467727,
+    "test_size": 1007
+  },
+  "baseline_comparison_path": "artifacts/triage_baseline_comparison.csv",
+  "threshold_curve_path": "artifacts/triage_threshold_curve.csv"
+}

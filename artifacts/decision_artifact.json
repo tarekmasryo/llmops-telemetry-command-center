@@ -1,0 +1,87 @@
+{
+  "status": "review_required",
+  "issues": [
+    "routing_candidate_failed_backtest",
+    "triage_conservative_review_all_equivalent"
+  ],
+  "dataset": "LLM Production Telemetry (Synthetic)",
+  "notebook": "Decision-Grade Observability (Notebook Edition)",
+  "scope_note": "Synthetic dataset for analytics and experimentation; not real production billing or customer incident data.",
+  "windows": {
+    "modeling_windowing_method": "dataset_split",
+    "history_start_timestamp_utc": "2025-02-01 02:23:54+00:00",
+    "history_end_timestamp_utc": "2025-04-30 22:23:19+00:00",
+    "evaluation_start_timestamp_utc": "2025-02-01 05:39:47+00:00",
+    "evaluation_end_timestamp_utc": "2025-04-30 22:01:15+00:00",
+    "drift_windowing_method": "temporal_early_vs_recent"
+  },
+  "generated_outputs": {
+    "routing_policy_use_case_csv": "artifacts/routing_policy_use_case.csv",
+    "routing_backtest_summary_csv": "artifacts/routing_backtest_summary.csv",
+    "drift_report_csv": "artifacts/drift_report.csv",
+    "triage_threshold_policy_json": "artifacts/triage_threshold_policy.json",
+    "triage_threshold_curve_csv": "artifacts/triage_threshold_curve.csv",
+    "triage_baseline_comparison_csv": "artifacts/triage_baseline_comparison.csv",
+    "triage_actions_preview_csv": "artifacts/triage_actions_preview.csv"
+  },
+  "operator_knobs": {
+    "SLA_MS": 2200.0,
+    "FAIL_BUDGET": 0.02,
+    "SLA_BUDGET": 0.05,
+    "TIME_SPLIT_FRAC": 0.8,
+    "DRIFT_REFERENCE_FRAC": 0.4,
+    "DRIFT_CURRENT_FRAC": 0.2,
+    "MODELING_WINDOWING_METHOD": "dataset_split",
+    "ROUTING_MAX_FAIL_RATE": 0.12,
+    "HOTSPOT_FAIL_RATE": 0.06,
+    "MAX_LATENCY_MISSING_RATE": 0.05,
+    "MAX_COST_MISSING_RATE": 0.05,
+    "FAILURE_EVENT_COST_USD": 40.0,
+    "SLA_BREACH_PENALTY_USD": 5.0,
+    "MIN_REQUESTS_POLICY": 60,
+    "MIN_REQUESTS_SLICE": 60,
+    "REVIEW_COST": 2.0,
+    "TRIAGE_FN_COST_USD": 40.0,
+    "CAPACITY_PER_DAY": 200,
+    "CAPACITY_P90_GUARD": 250,
+    "DAILY_COST_BUDGET_USD": 60.0
+  },
+  "summaries": {
+    "routing_policy_rows": 6,
+    "routing_policy_use_cases": 6,
+    "routing_status": "candidate_failed_backtest",
+    "routing_recommendation": "do_not_roll_out_keep_baseline",
+    "drift_rows": 16,
+    "drift_medium_high_features": 0,
+    "triage_status": "ok",
+    "triage_operating_mode": "conservative_review_all_equivalent",
+    "triage_threshold": 0.09999999999999999,
+    "triage_metrics": {
+      "roc_auc": 0.6141379537518941,
+      "avg_precision": 0.37193333821558205,
+      "test_base_rate": 0.29890764647467727,
+      "test_size": 1007
+    },
+    "triage_selected_policy_metrics": {
+      "policy": "selected_threshold",
+      "expected_cost": 2006.0,
+      "reviewed_rows": 1003,
+      "review_share": 0.9960278053624627,
+      "mean_reviews_per_day": 12.85897435897436,
+      "p90_reviews_per_day": 26.0,
+      "tn": 4,
+      "fp": 702,
+      "fn": 0,
+      "tp": 301,
+      "precision": 0.3000997008973081,
+      "recall": 1.0
+    },
+    "triage_baseline_policies": [
+      "selected_threshold",
+      "review_all",
+      "top_200_per_day",
+      "review_none"
+    ],
+    "triage_label_definition": "is_failure (post-call failure triage)"
+  }
+}

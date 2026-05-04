@@ -1,0 +1,37 @@
+# Virtual environment
+.venv/
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# macOS
+.DS_Store
+
+# Build & packaging
+dist/
+build/
+*.egg-info/
+
+# Test & lint cache
+.pytest_cache/
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+# Coverage / type-check caches
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Local notebooks and exports
+.ipynb_checkpoints/
+*.log
